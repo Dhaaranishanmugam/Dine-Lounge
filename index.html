@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dine Lounge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,400|Lato:400,700|Merriweather:700,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-main">
+<div class="container py-4">
+    <header class="text-center mb-4">
+    <img src="dinelogo.png" alt="Dine Lounge Logo" style="width:150px;" class="mb-2">
+    <h1 class="app-title">Dine Lounge</h1>
+    <p class="app-tagline">Your Taste. Your Space.</p>
+    </header>
+
+    <div class="modal fade user-welcome-modal" id="userModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered user-modal-dialog">
+    <div class="modal-content user-modal-content d-flex flex-row p-0">
+    <div class="welcome-visual d-none d-md-flex flex-column justify-content-center align-items-center">
+        <img src="dinelogo.png" alt="Dine Lounge Logo" class="welcome-logo mb-3">
+        <div class="welcome-slogan text-center">
+        <div class="slogan-main">Dine Lounge</div>
+        <div class="slogan-desc mt-2">Your Taste.<br>Your Space.</div>
+        </div>
+        <div class="welcome-visual-footer mt-auto mb-2">
+        <small class="text-light">Seamless Digital Self-Ordering</small>
+        </div>
+    </div>
+    <div class="welcome-form-box flex-fill d-flex flex-column justify-content-center p-4">
+        <h3 class="mb-3 text-center">Welcome to Dine Lounge!</h3>
+        <p class="mb-3 fs-5 text-center">Please enter your details to start your order.</p>
+        <form id="userForm">
+            <div class="mb-3">
+                <label for="userName" class="form-label fw-semibold">Your Name</label>
+                <input type="text" class="form-control form-control-lg" id="userName" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Dining Option</label>
+                <div>
+                <button type="button" class="btn opt-btn" data-value="Dine-In">🍽️ Dine-In</button>
+                <button type="button" class="btn opt-btn" data-value="Takeaway">🛍️ Takeaway</button>
+                </div>
+                <input type="hidden" id="userDining" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Menu Type</label>
+                <div>
+                    <button type="button" class="btn opt-btn" data-value="Veg">🥦 Veg</button>
+                    <button type="button" class="btn opt-btn" data-value="Non-Veg">🍗 Non-Veg</button>
+                </div>
+                <input type="hidden" id="userMenuType" required>
+            </div>
+                <button type="submit" class="btn btn-primary w-100 mt-3 fs-5">Start Ordering</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    <section id="categoryGrid" class="row mb-4"></section>
+    <section id="menuGrid" class="row g-4"></section>
+    <aside id="orderSummary" class="order-summary shadow-lg">
+    <div class="order-header text-center">
+        <h4>🛒 Your Order</h4>
+        <div class="order-user-details">
+        <span id="orderUserName"></span>
+        <span id="orderDining"></span>
+        </div>
+    </div>
+    <ul class="list-group mb-2" id="cartList"></ul>
+    <div class="order-total mb-3">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+    </div>
+    <button class="btn w-100 btn-clear mb-2" id="clearCartBtn">Clear Order</button>
+    <button class="btn w-100 btn-order" id="proceedBtn">Proceed to Confirm</button>
+    </aside>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+            <h3 class="mb-3">Review & Confirm</h3>
+            <ul class="list-group mb-3" id="reviewCartList"></ul>
+            <div class="order-total mb-3">
+                <span>Total:</span>
+                <span id="reviewTotal">₹0</span>
+            </div>
+            <div id="confirmAlert" class="alert alert-warning d-none">Please add items to your order.</div>
+            <button class="btn btn-lg btn-secondary mb-2" id="backToMenuBtn">Back</button>
+            <button class="btn btn-lg btn-order" id="confirmOrderBtn">Confirm Order</button>
+            </div>
+        </div>
+        </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+        <h3 class="mb-3">Order Placed!</h3>
+        <p class="lead mb-3">Show this code at the counter to collect your food:</p>
+        <div class="order-code-box mb-3">
+            <span id="orderCode"></span>
+        </div>
+        <p class="mb-0 fs-6 text-muted">Thank you, <span id="successUserName"></span>! Enjoy your meal.</p>
+        <button class="btn w-100 btn-clear mt-4" id="newOrderBtn">Place New Order</button>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="receivedModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+        <h3 class="mb-3 text-success">Order Received!</h3>
+        <p class="fs-5">Thank's for your Order!<br>If you need to place another order, click below.</p>
+        <button class="btn w-100 btn-order mt-3" id="receivedNewOrderBtn">Start New Order</button>
+        </div>
+    </div>
+    </div>
+
+    <footer class="text-center mt-5">
+    <small class="footer-note">Dine Lounge &copy; 2025 | Seamless Digital Self-Ordering</small>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
