@@ -1,0 +1,404 @@
+:root {
+    --main-bg: #F9F9F6;
+    --accent: #6C8CA1;
+    --secondary: #A3B18A;
+    --deep: #2F4F4F;
+    --gold: #EFEDE8;
+    --green: #A3B18A;
+    --soft-brown: #6C8CA1;
+    --white: #fff;
+    --text-dark: #1E1E1E;
+    --text-light: #7D7D7D;
+}
+
+body, .bg-main {
+    background: var(--main-bg);
+    font-family: 'Merriweather', serif;
+    color: var(--deep);
+    min-height: 100vh;
+}
+.app-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--deep);
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+.app-tagline {
+    font-family: 'Lato', sans-serif;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+header img {
+    filter: drop-shadow(0 2px 8px #a3b18a33);
+}
+footer .footer-note {
+    color: var(--accent);
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+}
+
+#categoryGrid {
+    -bottom: 2rem;
+}
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--gold) 60%, var(--secondary) 100%);
+    border-radius: 1.1rem;
+    box-shadow: 0 3px 16px rgba(108,140,161,0.12);
+    padding: 1.2rem 0.8rem;
+    margin-bottom: 1rem;
+    transition: transform 0.13s, box-shadow 0.15s;
+    cursor: pointer;
+    border: 3px solid transparent;
+    min-height: 120px;
+    position: relative;
+}
+.category-card.selected,
+.category-card:active,
+.category-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(108,140,161,0.17);
+    transform: scale(1.03);
+    z-index: 2;
+}
+.category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.6rem;
+    color: var(--secondary);
+}
+.category-label {
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: var(--deep);
+}
+
+.menu-card {
+    background: var(--white);
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 14px rgba(108,140,161,0.07);
+    overflow: hidden;
+    transition: transform 0.12s, box-shadow 0.16s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 32px rgba(108,140,161,0.11);
+}
+.menu-img-box {
+    width: 100%;
+    height: 170px;
+    background: var(--gold);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.menu-body {
+    padding: 1rem 1rem 0.7rem 1rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.menu-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.12rem;
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+.menu-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.97rem;
+    color: var(--text-light);
+    margin-bottom: 0.7rem;
+    flex: 1 1 auto;
+}
+.menu-price {
+    color: var(--deep);
+    font-weight: 700;
+    font-size: 1.13rem;
+}
+.menu-qty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+}
+.qty-btn {
+    background: var(--secondary);
+    color: var(--deep);
+    font-weight: bold;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 0.6rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    transition: background 0.15s;
+}
+.qty-btn:active, .qty-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.cart-qty {
+    font-size: 1.1rem;
+    width: 2.3rem;
+    border: none;
+    background: transparent;
+    text-align: center;
+    color: var(--deep);
+}
+
+.order-summary {
+    position: fixed;
+    top: 80px;
+    right: 28px;
+    max-width: 340px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 1.4rem;
+    box-shadow: 0 8px 32px rgba(108,140,161,0.14);
+    padding: 1.6rem 1.2rem;
+    z-index: 20;
+    min-height: 310px;
+}
+.order-header {
+    -bottom: 1rem;
+}
+.order-header h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+.order-user-details {
+    font-size: 1.05rem;
+    color: var(--secondary);
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}
+.order-total {
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-order {
+    background: linear-gradient(90deg, var(--deep) 60%, var(--accent) 100%);
+    color: var(--white);
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 0.7rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(108,140,161,0.09);
+    transition: background 0.13s, color 0.11s;
+}
+.btn-order:active, .btn-order:hover {
+    background: linear-gradient(90deg, var(--accent) 70%, var(--deep) 100%);
+    color: var(--white);
+}
+.btn-clear {
+    background: var(--soft-brown);
+    color: var(--deep);
+    border-radius: 0.7rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    transition: background 0.15s;
+}
+.btn-clear:active, .btn-clear:hover {
+    background: var(--secondary);
+    color: var(--accent);
+}
+.opt-btn {
+    margin: 0.2rem 0.4rem 0.2rem 0;
+    background: var(--secondary);
+    color: var(--deep);
+    border: 2px solid var(--accent);
+    border-radius: 0.7rem;
+    font-size: 1.1rem;
+    padding: 0.45rem 1.2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    transition: background 0.14s, border 0.12s;
+}
+.opt-btn.selected,
+.opt-btn:active,
+.opt-btn:hover {
+    background: var(--accent);
+    color: var(--deep);
+    border-color: var(--secondary);
+}
+
+.order-code-box {
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    background: var(--secondary);
+    color: var(--accent);
+    border-radius: 1rem;
+    padding: 0.7rem 1.2rem;
+    letter-spacing: 0.18em;
+    display: inline-block;
+    margin: 0 auto 0.8rem auto;
+    font-weight: bold;
+    box-shadow: 0 1px 12px #6c8ca133;
+}
+
+@media (max-width: 1200px) {
+    .order-summary {
+        position: static;
+        top: unset;
+        right: unset;
+        margin: 2rem auto 0 auto;
+        max-width: 100%;
+        min-width: unset;
+}
+}
+
+@media (max-width: 991px) {
+.order-summary {
+    position: static;
+    max-width: 100%;
+    margin-top: 2rem;
+}
+#categoryGrid {
+    margin-bottom: 1.2rem;
+}
+.menu-img-box {
+    height: 120px;
+}
+}
+
+@media (max-width: 767px) {
+.order-summary {
+    padding: 1.2rem 0.7rem;
+}
+.menu-img-box {
+    height: 90px;
+}
+}
+
+@media (max-width: 575px) {
+.order-summary {
+    margin-top: 1.1rem;
+    padding: 1rem 0.3rem;
+    border-radius: 1rem;
+}
+.category-card {
+    min-height: 90px;
+    padding: 0.7rem 0.2rem;
+}
+}
+
+.user-welcome-modal .modal-dialog.user-modal-dialog {
+    max-width: 680px;
+    width: 98vw;
+}
+
+.user-welcome-modal .user-modal-content {
+    display: flex;
+    flex-direction: row;
+    border-radius: 1.8rem;
+    box-shadow: 0 8px 40px rgba(108, 140, 161, 0.25);
+    background: var(--main-bg, #F9F9F6);
+    overflow: hidden;
+    min-height: 390px;
+    width: 100%;
+}
+
+.user-welcome-modal .welcome-visual {
+    background: linear-gradient(135deg, var(--secondary, #A3B18A) 60%, var(--accent, #6C8CA1) 100%);
+    width: 260px;
+    min-width: 220px;
+    max-width: 320px;
+    padding: 2.1rem 1.1rem 1.1rem 1.1rem;
+    border-radius: 1.8rem 0 0 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.user-welcome-modal .welcome-logo {
+    width: 95px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+}
+
+.user-welcome-modal .welcome-slogan {
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.user-welcome-modal .slogan-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    line-height: 1.2;
+}
+
+.user-welcome-modal .slogan-desc {
+    font-family: 'Merriweather', serif;
+    font-size: 1.05rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.user-welcome-modal .welcome-visual-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    text-align: center;
+    color: #eee;
+    font-size: 0.98rem;
+    opacity: 0.8;
+}
+
+.user-welcome-modal .welcome-form-box {
+    background: #fff;
+    flex: 1 1 0%;
+    padding: 2.2rem 2.1rem;
+    border-radius: 0 1.8rem 1.8rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+@media (max-width: 767px) {
+    .user-welcome-modal .user-modal-content {
+        flex-direction: column;
+        min-height: 0;
+    }
+    .user-welcome-modal .welcome-visual {
+        width: 100%;
+        min-width: 0;
+        border-radius: 1.8rem 1.8rem 0 0;
+        min-height: 130px;
+        padding: 1.2rem;
+    }
+    .user-welcome-modal .welcome-form-box {
+        border-radius: 0 0 1.8rem 1.8rem;
+        padding: 1.1rem;
+    }
+}
